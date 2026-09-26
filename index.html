@@ -81,6 +81,15 @@
     h1 { font-size: 24px; }
     .vol { margin-left: 0; }
   }
+  .styles { margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .styles h2 { font-size: 30px; }
+  .tests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 16px; }
+  .test { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 10px; align-content: start; }
+  .test video, .test img { width: 100%; aspect-ratio: 9 / 16; display: block; border-radius: 10px; background: #000; object-fit: cover; }
+  .test h3 { font-size: 22px; font-weight: 800; margin: 2px 0 0; }
+  .test p { margin: 0; font-size: 18px; }
+  .test .cap { font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 700px) { .tests { grid-template-columns: 1fr; } .test { max-width: 380px; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 
@@ -185,6 +194,34 @@
     </article>
   </div>
 
+  <section class="styles">
+    <h2>Нови реклами за дървеници — кой стил е най-добър?</h2>
+    <p class="intro">Правим 4 нови реклами за дървеници. Преди да ги направим, пробваме <strong>три различни стила</strong>. Всяка проба е кратко видео от 3 секунди <strong>без звук</strong> и една снимка от края на рекламата. Кажете на Преслав кой стил ви харесва най-много.</p>
+    <div class="tests">
+      <figure class="test">
+        <video src="v/stil-1-plastilin.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <h3>Стил 1 — пластилин</h3>
+        <p>Като анимационен филм с пластилинови фигурки. Дървеницата е смешна, но се познава веднага.</p>
+        <div class="cap">Краят на рекламата</div>
+        <img src="img/stil-1-kraj.jpg" alt="Техник на БИОГАРД в бял костюм с пръскачка, дървеницата бяга" loading="lazy">
+      </figure>
+      <figure class="test">
+        <video src="v/stil-2-muzei.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <h3>Стил 2 — истински музей</h3>
+        <p>Като истинска зала в музей: модел на дървеница във витрина и неуспешните опити като експонати.</p>
+        <div class="cap">Краят на рекламата</div>
+        <img src="img/stil-2-kraj.jpg" alt="Техник на БИОГАРД в музейна зала" loading="lazy">
+      </figure>
+      <figure class="test">
+        <video src="v/stil-3-razrez.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <h3>Стил 3 — апартамент в разрез</h3>
+        <p>Панелен апартамент, гледан отгоре като къщичка. С лупа се вижда къде се крият дървениците.</p>
+        <div class="cap">Краят на рекламата</div>
+        <img src="img/stil-3-kraj.jpg" alt="Апартамент в разрез с техник на БИОГАРД в спалнята" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
   <footer>
     Всяка реклама завършва с телефона <span class="tel">088 715 0675</span>, biogard.bg и „Русе и региона“.<br>
     Версия от 26 септември 2026 г. Страницата се обновява, когато има нови версии.
@@ -192,7 +229,8 @@
 </div>
 
 <script>
-  const vids = [...document.querySelectorAll('video')];
+  const vids = [...document.querySelectorAll('.phone video')];
+  document.querySelectorAll('.test video').forEach(v => v.play().catch(() => {}));
   const vol = document.getElementById('vol');
   const out = document.getElementById('volOut');
   let level = 0.5;
